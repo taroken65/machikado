@@ -14,7 +14,9 @@ get "about" => "user/homes#about"
 
  scope module: :user do
   resources :users, only: [:show,:edit,:update]
-  resources :topics, only: [:index,:show,:new,:create,:destroy]
+  resources :topics, only: [:index,:show,:new,:create,:destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
  end
 
 

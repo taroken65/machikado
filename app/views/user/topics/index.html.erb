@@ -6,15 +6,19 @@
        <th>本文</th>
        <th>年齢別</th>
        <th>カテゴリー</th>
+       <th>コメント数</th>
       </tr>
       </thead>
   <tbody>
     <% @topics.each do |topic| %>
     <tr>
-      <td><%= topic.title %></td>
+      <td><%= link_to topic_path(topic) do %>
+          <%= topic.title %>
+          <% end %></td>
       <td><%= topic.body %></td>
       <td><%= topic.age.name %></td>
       <td><%= topic.category.name %></td>
+      <td><%= link_to "#{topic.comments.count} 件", topic_path(topic) %></td>
     </tr>
   </tbody><% end %>
   </table>
