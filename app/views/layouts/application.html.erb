@@ -19,20 +19,23 @@
           <%= link_to "コメント一覧", root_path, class: 'btn btn-outline-dark' %>
         </li>
         <li>
-    　　    <%= link_to "カテゴリー一覧", root_path, class: 'btn btn-outline-dark' %>>
-        </li>
+          <%= link_to "カテゴリー一覧", root_path, class: 'btn btn-outline-dark' %>
+    　　  </li>
         <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
         </li>
       <% elsif user_signed_in? %>
         <li>
             ようこそ、<%= current_user.name %>さん！
         </li>
         <li>
-            <%= link_to "マイページ", root_path, class: "btn btn-outline-dark" %>
+            <%= link_to "トップページ", root_path, class: "btn btn-outline-dark" %>
         </li>
         <li>
-            <%= link_to "トピック作成", root_path, class: 'btn btn-outline-dark' %>
+            <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-dark" %>
+        </li>
+        <li>
+            <%= link_to "トピック作成", new_topic_path, class: 'btn btn-outline-dark' %>
         </li>
         <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>

@@ -13,7 +13,8 @@ get "about" => "user/homes#about"
     passwords: 'users/passwords'}
 
  scope module: :user do
- resources :users, only: [:show,:edit,:update]
+  resources :users, only: [:show,:edit,:update]
+  resources :topics, only: [:index,:show,:new,:create,:destroy]
  end
 
 
@@ -23,4 +24,9 @@ get "about" => "user/homes#about"
       sessions: 'admins/sessions',
       registrations: 'admins/registrations',
       passwords: 'admins/passwords'}
+
+ namespace :admin do
+  resources :categories, :except => [:new,:show,:destroy]
+  resources :ages, :except => [:new,:show,:destroy]
+ end
 end

@@ -1,0 +1,20 @@
+<h2>トピック一覧</h2>
+  <table>
+     <thead>
+      <tr>
+       <th>タイトル</th>
+       <th>本文</th>
+       <th>年齢別</th>
+       <th>カテゴリー</th>
+      </tr>
+      </thead>
+  <tbody>
+    <% @topics.each do |topic| %>
+    <tr>
+      <td><%= topic.title %></td>
+      <td><%= topic.body %></td>
+      <td><%= topic.age.name %></td>
+      <td><%= topic.category.name %></td>
+    </tr>
+  </tbody><% end %>
+  </table>
