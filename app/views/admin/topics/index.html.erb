@@ -1,8 +1,8 @@
 <h2>トピック一覧</h2>
-  <table>
+<table>
      <thead>
       <tr>
-       <th>投稿者</th>
+       <th>ニックネーム</th>
        <th>タイトル</th>
        <th>本文</th>
        <th>年齢別</th>
@@ -13,15 +13,14 @@
   <tbody>
     <% @topics.each do |topic| %>
     <tr>
-      <td><%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-          <%= topic.user.name %></td>
+      <td><%= topic.user.name %></td>
       <td><%= link_to topic_path(topic) do %>
           <%= topic.title %>
           <% end %></td>
       <td><%= topic.body %></td>
       <td><%= topic.age.name %></td>
       <td><%= topic.category.name %></td>
-      <td><%= link_to "#{topic.comments.count} 件", topic_path(topic) %></td>
+      <td><%= topic.comments.count %></td>
     </tr>
   </tbody><% end %>
   </table>

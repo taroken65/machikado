@@ -1,0 +1,22 @@
+<h2>コメント一覧</h2>
+  <table>
+     <thead>
+      <tr>
+       <th>No.</th>
+       <th>投稿日</th>
+       <th>投稿者</th>
+       <th>コメント</th>
+       <th>トピックタイトル</th>
+       </tr>
+      </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= comment.user.name %></td>
+      <td><%= comment.comment %></td>
+      <td><%= comment.topic.title %></td>
+    </tr>
+  </tbody><% end %>
+  </table>

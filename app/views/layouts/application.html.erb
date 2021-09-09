@@ -13,7 +13,10 @@
     <ul class="navbar-nav ml-auto">
       <% if admin_signed_in? %>
         <li>
-          <%= link_to "トピック一覧", root_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-dark' %>
+        </li>
+        <li>
+          <%= link_to "トピック一覧", admin_topics_path, class: 'btn btn-outline-dark' %>
         </li>
         <li>
           <%= link_to "コメント一覧", root_path, class: 'btn btn-outline-dark' %>
