@@ -1,6 +1,6 @@
 class User::TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.page(params[:page]).reverse_order
   end
 
   def new
@@ -11,7 +11,7 @@ class User::TopicsController < ApplicationController
     topic = Topic.new(topic_params)
     topic.user_id = current_user.id
     topic.save
-    redirect_to topics_path
+    redirect_to user_path(current_user)
   end
 
   def show

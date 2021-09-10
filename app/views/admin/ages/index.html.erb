@@ -12,9 +12,10 @@
         <th>カテゴリー</th>
       </tr>
       </thead>
-      <% @ages.each do |f| %>
+      <% @ages.each do |age| %>
       <tr>
-       <td><%= f.name %></td>
+       <td><%= age.name %></td>
+       <td><%= link_to "編集する", edit_admin_age_path(age) %></td>
        <% end %>
       <tr>
       </table>

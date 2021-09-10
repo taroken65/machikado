@@ -1,8 +1,8 @@
 <h2>カテゴリー追加</h2>
      <%= form_with model: @category, url: admin_categories_path, local: true do |f| %>
-      ジャンル名
+      カテゴリー名
       <%= f.text_field :name, :placeholder => "カテゴリー名" %>
-      <%= f.submit '新規投稿' %>
+      <%= f.submit '登録' %>
      <% end %>
 
 <h2>カテゴリー一覧</h2>
@@ -12,9 +12,10 @@
         <th>カテゴリー</th>
       </tr>
       </thead>
-      <% @categories.each do |f| %>
+      <% @categories.each do |category| %>
       <tr>
-       <td><%= f.name %></td>
+       <td><%= category.name %></td>
+       <td><%= link_to "編集する", edit_admin_category_path(category) %></td>
        <% end %>
       <tr>
       </table>

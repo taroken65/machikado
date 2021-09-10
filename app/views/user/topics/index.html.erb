@@ -1,7 +1,8 @@
 <h2>トピック一覧</h2>
-  <table>
+  <table class="table">
      <thead>
       <tr>
+       <th>No.</th>
        <th>投稿者</th>
        <th>タイトル</th>
        <th>本文</th>
@@ -13,7 +14,8 @@
   <tbody>
     <% @topics.each do |topic| %>
     <tr>
-      <td><%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+      <td><%= topic.id %></td>
+      <td><%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
           <%= topic.user.name %></td>
       <td><%= link_to topic_path(topic) do %>
           <%= topic.title %>

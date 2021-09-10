@@ -1,0 +1,23 @@
+<h2>ユーザー詳細</h2><%= link_to "編集する", edit_admin_user_path, class:"btn btn-primary btn-block" %>
+  <table class="table">
+    <tr>
+      <th>プロフィール画像</th>
+      <td><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "50x50") %></td>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>ステータス</th>
+      <td><% if @user.is_deleted == true %>
+          <p class = "text-secondary">退会</p>
+          <% else %>
+          <p class = "text-success">有効</p>
+          <% end %></td>
+    </tr>
+  </table>

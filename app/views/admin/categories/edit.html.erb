@@ -1,0 +1,6 @@
+<h4>カテゴリー編集</h2>
+  <%= form_with model:@category, url: admin_category_path, local:true do |f| %>
+      <h4>カテゴリー名</h4>
+      <%= f.text_field :name %>
+      <%= f.submit "変更を保存" , class: "btn btn-success"%>
+      <% end %>

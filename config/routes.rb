@@ -31,7 +31,7 @@ get "about" => "user/homes#about"
   resources :categories, :except => [:new,:show,:destroy]
   resources :ages, :except => [:new,:show,:destroy]
   resources :topics, only: [:index,:show,:destroy]
-  resources :users, only: [:index,:show,:destroy]
+  resources :users, only: [:index,:show,:edit,:update,:destroy]
   resources :comments, only: [:index,:show,:destroy]
  end
 end

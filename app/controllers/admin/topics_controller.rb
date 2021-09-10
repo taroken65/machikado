@@ -1,6 +1,6 @@
 class Admin::TopicsController < ApplicationController
   def index
-   @topics = Topic.all
+   @topics = Topic.page(params[:page]).reverse_order
   end
 
   def show
