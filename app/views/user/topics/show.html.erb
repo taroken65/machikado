@@ -1,24 +1,63 @@
 <h2>トピック詳細</h2>
-<div>
-  <p>ニックネーム：<%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-     <%= @topic.user.name %></p>
-  <p>タイトル：<%= @topic.title %></p>
-  <p>本文：<%= @topic.body %></p>
-  <p>投稿日時：<%= @topic.created_at.strftime('%Y/%m/%d') %></p>
-  <p>コメント件数：<%= @topic.comments.count %></p>
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-active">投稿者</th>
+      <td><%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+          <%= @topic.user.name %></td>
+    </tr>
+    <tr>
+      <th class="table-active">タイトル</th>
+      <td><%= @topic.title %></td>
+    </tr>
+    <tr>
+      <th class="table-active">本文</th>
+      <td><%= @topic.body %></td>
+    </tr>
+    <tr>
+      <th class="table-active">投稿日時</th>
+      <td><%= @topic.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <th class="table-active">コメント件数</th>
+      <td><%= @topic.comments.count %></td>
+    </tr>
+    <tr>
+      <th class="table-active">いいね数</th>
+      <td><% if @topic.favorited_by?(current_user) %>
+    <p>
+      <%= link_to topic_favorites_path(@topic), method: :delete do %>
+        ♥<%= @topic.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to topic_favorites_path(@topic), method: :post do %>
+        ♡<%= @topic.favorites.count %>
+      <% end %>
+    </p>
+  <% end %></td>
+    </tr>
+  </table>
+
+<h2>コメント</h2>
   <% @topic.comments.each do |comment| %>
-  <p><%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% if comment.user == current_user %>
-  <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %>
-  <% end %></p>
-<% end %>
-</div>
+  <table class="table">
+    <tr>
+      <td><%= link_to user_path(comment.user) do %>
+          <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+          <%= comment.user.name %><% end %></td>
+      <td><%= comment.comment %></td>
+      <td> <%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><% if comment.user == current_user %>
+          <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %>
+          <% end %></td>
+    </tr><% end %>
+  </table>
 
 <h2>コメント投稿</h2>
 <div>
 <%= form_with(model:[@topic, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <%= f.text_area :comment, :size=>"180x5",placeholder: "コメントをここに" %>
+  <%= f.submit "投稿する" %>
 <% end %>
 </div>

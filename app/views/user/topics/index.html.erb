@@ -9,6 +9,7 @@
        <th>年齢別</th>
        <th>カテゴリー</th>
        <th>コメント数</th>
+       <th>いいね数</th>
       </tr>
       </thead>
   <tbody>
@@ -24,6 +25,7 @@
       <td><%= topic.age.name %></td>
       <td><%= topic.category.name %></td>
       <td><%= link_to "#{topic.comments.count} 件", topic_path(topic) %></td>
+      <td><%= topic.favorites.count %></td>
     </tr>
   </tbody><% end %>
   </table>
