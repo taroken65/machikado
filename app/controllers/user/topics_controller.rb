@@ -11,7 +11,7 @@ class User::TopicsController < ApplicationController
     topic = Topic.new(topic_params)
     topic.user_id = current_user.id
     topic.save
-    redirect_to user_path(current_user)
+    redirect_to topic_path(topic)
   end
 
   def show

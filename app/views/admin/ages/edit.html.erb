@@ -1,6 +1,8 @@
-<h4>年齢カテゴリー編集</h2>
+<div class="container mt-5">
+<h2>年齢カテゴリー編集</h2>
   <%= form_with model:@age, url: admin_age_path, local:true do |f| %>
       <h4>年齢カテゴリー名</h4>
       <%= f.text_field :name %>
       <%= f.submit "変更を保存" , class: "btn btn-success"%>
       <% end %>
+</div>

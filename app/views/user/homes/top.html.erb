@@ -1,1 +1,31 @@
-<h1>トップページ</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="offset-1 col-9">
+        <div class="main-visual">
+          <p>これから子育てを控えるパパや子育て中のパパを対象とした育児に関する悩みや疑問をシェアし、交流するためのサイトです。</p>
+        </div>
+
+          <h2 class='mt-5'>新着トピック</h2>
+            <% @topics.first(5).each do |topic|%>
+              <div class="border-top">
+                <p><%= link_to topic_path(topic) do %>
+                   <%= topic.title %><% end %></p>
+                <p><%= topic.body %></p>
+                <span class="category"><%= topic.category.name %></span>
+                <p class='text-right'><%= link_to user_path(topic.user) do %>
+                                     <%= topic.user.name %>
+                                     <% end %>
+                  <%= topic.created_at.strftime('%Y/%m/%d') %></p>
+                <% end %>
+             </div>
+    </div>
+
+   <div class="col-2 pt-5">
+      <h2>サイドバー</h2>
+      サイド
+
+   </div>
+  </div>
+ </div>
+
+

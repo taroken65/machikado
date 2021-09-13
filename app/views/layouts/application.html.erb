@@ -10,60 +10,73 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26896D;" >
+
+
+    <a class="navbar-brand p-3" href="/"><b>まちかど広場</b></a>
     <ul class="navbar-nav ml-auto">
       <% if admin_signed_in? %>
         <li>
-          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-light' %>
         </li>
         <li>
-          <%= link_to "トピック一覧", admin_topics_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "トピック一覧", admin_topics_path, class: 'btn btn-outline-light ml-2' %>
         </li>
         <li>
-          <%= link_to "コメント一覧", admin_comments_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "コメント一覧", admin_comments_path, class: 'btn btn-outline-light ml-2' %>
         </li>
         <li>
-          <%= link_to "年齢別カテゴリー一覧", admin_ages_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "年齢別カテゴリー一覧", admin_ages_path, class: 'btn btn-outline-light ml-2' %>
         </li>
         <li>
-          <%= link_to "カテゴリー一覧", admin_categories_path, class: 'btn btn-outline-dark' %>
+          <%= link_to "カテゴリー一覧", admin_categories_path, class: 'btn btn-outline-light ml-2' %>
     　　  </li>
         <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-light ml-2' %>
         </li>
       <% elsif user_signed_in? %>
         <li>
             ようこそ、<%= current_user.name %>さん！
         </li>
         <li>
-            <%= link_to "トップページ", root_path, class: "btn btn-outline-dark" %>
+            <%= link_to "トピック一覧", topics_path, class: "btn btn-outline-light ml-2" %>
         </li>
         <li>
-            <%= link_to "トピック一覧", topics_path, class: "btn btn-outline-dark" %>
+            <%= link_to "トピック作成", new_topic_path, class: "btn btn-outline-light ml-2" %>
         </li>
         <li>
-            <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-dark" %>
+            <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-light ml-2" %>
         </li>
         <li>
-            <%= link_to "トピック作成", new_topic_path, class: 'btn btn-outline-dark' %>
-        </li>
-        <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light ml-2' %>
         </li>
         <!--管理者でも会員でもログインしていないとき-->
       <% else %>
         <li>
-            <%= link_to "About", about_path, class: 'btn btn-outline-dark' %>
+            <%= link_to "About", about_path, class: 'btn btn-outline-light' %>
         </li>
         <li>
-            <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light ml-2' %>
         </li>
         <li>
-            <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark' %>
+            <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light ml-2' %>
         </li>
       <% end %>
     </ul>
     </nav>
     <%= yield %>
+
+
+
+  <footer class="bg-white shadow text-center text-lg-start">
+     <div class="text-center p-3 bg-light">
+       Copyright © まちかど広場 All rights reserved
+     </div>
+     </footer>
   </body>
+
+
+
 </html>
+
