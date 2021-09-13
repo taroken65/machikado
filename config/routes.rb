@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
 root to: 'user/homes#top'
 get "about" => "user/homes#about"
+get "/search", to: "searches#search"
+
 
 # 会員側のルーティング設定
  devise_for :users,controllers: {
@@ -13,11 +15,12 @@ get "about" => "user/homes#about"
     passwords: 'users/passwords'}
 
  scope module: :user do
+  get '/search', to: 'searches#search'
   resources :users, only: [:show,:edit,:update]
   resources :topics, only: [:index,:show,:new,:create,:destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-  end
+    end
  end
 
 
