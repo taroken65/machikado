@@ -1,5 +1,8 @@
 <div class="container mt-5">
-<h2>ユーザー詳細 <%= link_to "編集する", edit_admin_user_path, class:"btn btn-outline-success" %></h2>
+<h2 class="heading">ユーザー詳細</h2>
+ <div class="text-right">
+  <%= link_to "編集する", edit_admin_user_path, class:"btn btn-outline-success" %>
+ </div>
   <table class="table">
     <tr>
       <th>プロフィール画像</th>
@@ -21,5 +24,69 @@
           <p class = "text-success">有効</p>
           <% end %></td>
     </tr>
+    <tr>
+      <th>登録日</th>
+      <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
   </table>
+
+<h2 class="heading mt-5">ユーザートピック</h2>
+ <table class="table">
+     <thead>
+      <tr>
+       <th>No.</th>
+       <th>投稿日</th>
+       <th>タイトル</th>
+       <th>本文</th>
+       <th>年齢別</th>
+       <th>カテゴリー</th>
+       <th>コメント数</th>
+       <th>いいね数</th>
+       <th></th>
+      </tr>
+     </thead>
+     <tbody>
+     <% @topics.each do |topic| %>
+      <tr>
+       <td><%= topic.id %></td>
+       <td><%= topic.created_at.strftime('%Y/%m/%d') %></td>
+       <td><%= link_to admin_topic_path(topic) do %>
+           <%= topic.title %>
+           <% end %></td>
+       <td><%= topic.body %></td>
+       <td><%= topic.age.name %></td>
+       <td><%= topic.category.name %></td>
+       <td><%= topic.comments.count %></td>
+       <td><%= topic.favorites.count %></td>
+       <td><%= link_to "削除", admin_comment_path(topic), method: :delete, class:"btn btn-outline-success",data: { confirm: '本当に消しますか？' } %></td>
+      </tr>
+     </tbody>
+     <% end %>
+  </table>
+
+<h2 class="heading mt-5">ユーザーコメント</h2>
+ <table class="table">
+     <thead>
+      <tr>
+       <th>No.</th>
+       <th>投稿日</th>
+       <th>コメント</th>
+       <th>トピックタイトル</th>
+       <th></th>
+       </tr>
+      </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= comment.comment %></td>
+      <td><%= link_to admin_topic_path(comment.topic) do %>
+        <%= comment.topic.title %><% end %></td>
+      <td><%= link_to "削除", admin_comment_path(comment.topic), method: :delete, class:"btn btn-outline-success",data: { confirm: '本当に消しますか？' } %></td>
+    </tr>
+  </tbody>
+   <% end %>
+  </table>
+
 </div>

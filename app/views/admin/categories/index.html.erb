@@ -1,12 +1,12 @@
 <div class="container mt-5">
-<h2>カテゴリー追加</h2>
+<h2 class="heading">カテゴリー追加</h2>
      <%= form_with model: @category, url: admin_categories_path, local: true do |f| %>
       カテゴリー名
       <%= f.text_field :name, :placeholder => "カテゴリー名" %>
       <%= f.submit '登録' %>
      <% end %>
 
-<h2>カテゴリー一覧</h2>
+<h2 class="heading mt-5">カテゴリー一覧</h2>
 <table class="table">
       <thead>
        <tr>

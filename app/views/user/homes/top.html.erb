@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <div class="main-visual">
         <p style="text-align:center">これから子育てを控えるパパや子育て中のパパを対象とした育児に関する悩みや疑問をシェアし、<br>
         交流するためのサイトです。</p>
@@ -8,7 +8,7 @@
       </div>
 
       <h2 class='mt-5'>新着トピック</h2>
-      <% @topics.first(5).each do |topic|%>
+      <% @topics.first(10).each do |topic|%>
         <div class="border-top">
           <p>
             <%= link_to topic_path(topic) do %>
@@ -28,9 +28,85 @@
       <% end %>
     </div>
 
-    <div class="col-2 pt-5">
-      <h2>サイドバー</h2>
-      サイド
+    <div class="col-3 ml-3">
+       <h5 class="border-bottom"><b>アクセス数ランキング</b></h5>
+         <% lastViewCount = 0 %>
+          <% j = 1 %>
+           <% @view_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastViewCount = ranking.view_counts.count %>
+           <% end %>
+           <% if ranking.view_counts.count != lastViewCount %>
+            <% j = i %>
+            <%= j %>位
+            <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            閲覧数：<%= ranking.view_counts.count %>
+            <% lastViewCount = ranking.view_counts.count %>
+           <% else %>
+            <% lastViewCount = ranking.view_counts.count %>
+            <%= j %>位
+            <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            閲覧数：<%= ranking.view_counts.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+       <h5 class="border-bottom mt-4"><b>いいね数ランキング</b></h5>
+         <% lastFavorite = 0 %>
+          <% j = 1 %>
+           <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastFavorite = ranking.favorites.count %>
+           <% end %>
+           <% if ranking.favorites.count != lastFavorite %>
+            <% j = i %>
+            <%= j %>位
+            <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            いいね数：<%= ranking.favorites.count %>
+            <% lastFavorite = ranking.favorites.count %>
+           <% else %>
+            <% lastFavorite = ranking.favorites.count %>
+            <%= j %>位
+            <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            いいね数：<%= ranking.favorites.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+      <h5 class="border-bottom mt-4"><b>コメント数ランキング</b></h5>
+         <% lastComment = 0 %>
+          <% j = 1 %>
+           <% @comment_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+           <% lastComment = ranking.comments.count %>
+           <% end %>
+           <% if ranking.comments.count != lastComment %>
+           <% j = i %>
+           <%= j %>位
+           <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            コメント数：<%= ranking.comments.count %>
+           <% lastComment = ranking.comments.count %>
+           <% else %>
+           <% lastComment = ranking.comments.count %>
+           <%= j %>位
+           <%= link_to topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+           コメント数：<%= ranking.comments.count %>
+            <% end %>
+            <br>
+           <% end %>
+
     </div>
   </div>
 </div>

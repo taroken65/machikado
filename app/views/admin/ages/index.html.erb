@@ -1,12 +1,12 @@
 <div class="container mt-5">
-<h2>年齢別カテゴリー追加</h2>
+<h2 class="heading">年齢別カテゴリー追加</h2>
      <%= form_with model: @age, url: admin_ages_path, local: true do |f| %>
       年齢
       <%= f.text_field :name, :placeholder => "年齢" %>
       <%= f.submit '登録' %>
      <% end %>
 
-<h2>年齢別カテゴリー一覧</h2>
+<h2 class="heading mt-5">年齢別カテゴリー一覧</h2>
 <table class="table">
       <thead>
        <tr>

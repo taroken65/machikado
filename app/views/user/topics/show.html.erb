@@ -1,3 +1,55 @@
+<% if user_signed_in? %>
+<div class="container mt-5">
+  <h2 class="border-bottom topic">トピック詳細</h2>
+   <div class=" mt-3">
+     <span class="category"><%= @topic.category.name %></span>
+       <span class="age"><%= @topic.age.name %></span>
+     <h3 class="title mt-3"><%= @topic.title %></h3>
+      <p><%= @topic.body %></p>
+      <% if @topic.favorited_by?(current_user) %>
+      <%= link_to topic_favorites_path(@topic), method: :delete do %>
+      ♥<%= @topic.favorites.count %>
+      <% end %>
+      <% else %>
+      <%= link_to topic_favorites_path(@topic), method: :post do %>
+      ♡<%= @topic.favorites.count %>
+      <% end %>
+      <% end %>
+       <p class='text-right'>
+         <%= link_to user_path(@topic.user) do %>
+         <%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+         <%= @topic.user.name %>
+         <% end %>
+         <%= @topic.created_at.strftime('%Y/%m/%d') %>
+       </p>
+
+
+
+<h2 class="topic">コメント</h2>
+  <% @topic.comments.each do |comment| %>
+  <table class="table">
+    <tr>
+      <td><%= link_to user_path(comment.user) do %>
+          <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+          <%= comment.user.name %><% end %></td>
+      <td><%= comment.comment %></td>
+      <td> <%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><% if comment.user == current_user %>
+          <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %>
+          <% end %></td>
+    </tr><% end %>
+  </table>
+
+  <h2 class="topic">コメント投稿</h2>
+  <div>
+    <%= form_with(model:[@topic, @comment], local: true) do |f| %>
+    <%= f.text_area :comment, :size=>"100%",placeholder: "コメントをここに" %>
+    <%= f.submit "投稿する" %>
+    <% end %>
+  </div>
+</div>
+
+<% else %>
 <div class="container mt-5">
 <h2>トピック詳細</h2>
   <table class="table table-bordered">
@@ -22,23 +74,7 @@
       <th class="table-active">コメント件数</th>
       <td><%= @topic.comments.count %></td>
     </tr>
-    <tr>
-      <th class="table-active">いいね数</th>
-      <td><% if @topic.favorited_by?(current_user) %>
-    <p>
-      <%= link_to topic_favorites_path(@topic), method: :delete do %>
-        ♥<%= @topic.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to topic_favorites_path(@topic), method: :post do %>
-        ♡<%= @topic.favorites.count %>
-      <% end %>
-    </p>
-  <% end %></td>
-    </tr>
-  </table>
+   </table>
 
 <h2>コメント</h2>
   <% @topic.comments.each do |comment| %>
@@ -57,10 +93,11 @@
 
 <h2>コメント投稿</h2>
 <div>
-<%= form_with(model:[@topic, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, :size=>"180x5",placeholder: "コメントをここに" %>
+  <%= form_with(model:[@topic, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, :size=>"100%",placeholder: "コメントをここに" %>
   <%= f.submit "投稿する" %>
-<% end %>
+  <% end %>
+</div>
 </div>
 
-</div>
+<% end %>

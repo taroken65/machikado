@@ -1,4 +1,6 @@
 class User::TopicsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+
   def index
     @topics = Topic.page(params[:page]).reverse_order
   end
@@ -16,6 +18,9 @@ class User::TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, topic_id: @topic.id)
+      current_user.view_counts.create(topic_id: @topic.id)
+    end
     @comment = Comment.new
   end
 

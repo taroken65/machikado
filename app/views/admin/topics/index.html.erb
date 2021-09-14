@@ -12,23 +12,24 @@
        <th>コメント数</th>
        <th>いいね数</th>
       </tr>
-      </thead>
-  <tbody>
-    <% @topics.each do |topic| %>
-    <tr>
-      <td><%= topic.id %></td>
-      <td><%= link_to admin_user_path(topic.user) do %>
-          <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
-          <%= topic.user.name %><% end %></td>
-      <td><%= link_to admin_topic_path(topic) do %>
-          <%= topic.title %>
-          <% end %></td>
-      <td><%= topic.body %></td>
-      <td><%= topic.age.name %></td>
-      <td><%= topic.category.name %></td>
-      <td><%= topic.comments.count %></td>
-      <td><%= topic.favorites.count %></td>
-    </tr>
-  </tbody><% end %>
+     </thead>
+     <tbody>
+     <% @topics.each do |topic| %>
+      <tr>
+       <td><%= topic.id %></td>
+       <td><%= link_to admin_user_path(topic.user) do %>
+           <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+           <%= topic.user.name %><% end %></td>
+       <td><%= link_to admin_topic_path(topic) do %>
+           <%= topic.title %>
+           <% end %></td>
+       <td><%= topic.body %></td>
+       <td><%= topic.age.name %></td>
+       <td><%= topic.category.name %></td>
+       <td><%= topic.comments.count %></td>
+       <td><%= topic.favorites.count %></td>
+      </tr>
+     </tbody>
+     <% end %>
   </table>
 </div>

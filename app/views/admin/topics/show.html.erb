@@ -1,16 +1,28 @@
 <div class="container mt-5">
-<h2>トピック詳細</h2>
-<div>
-  <p>タイトル：<%= @topic.title %></p>
-  <p>本文：<%= @topic.body %></p>
-  <p>投稿日時：<%= @topic.created_at.strftime('%Y/%m/%d') %></p>
-  <%= link_to "削除", admin_topic_path(@topic), method: :delete %>
-  <p>コメント件数：<%= @topic.comments.count %></p>
-  <p>いいね数：<%= @topic.favorites.count %></p>
+ <h2 class="heading">トピック詳細 <%= link_to "削除", admin_topic_path(@topic), method: :delete, class:"btn btn-outline-success",data: { confirm: '本当に消しますか？' } %></h2>
+  <span class="category"><%= @topic.category.name %></span>
+  <span class="age"><%= @topic.age.name %></span>
+  　<h3 class="title mt-3"><%= @topic.title %></h3>
+      <p><%= @topic.body %></p>
+      <p>コメント数：<%= @topic.comments.count %>, いいね数：<%= @topic.favorites.count %></p>
+      <p class='text-right'>
+         <%= link_to user_path(@topic.user) do %>
+         <%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+         <%= @topic.user.name %>
+         <% end %>
+         <%= @topic.created_at.strftime('%Y/%m/%d') %>
+      </p>
 
+ <h2 class="heading">コメント</h2>
   <% @topic.comments.each do |comment| %>
-  <p><%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %>
-  <% end %></p>
+  <table class="table">
+    <tr>
+      <td><%= link_to user_path(comment.user) do %>
+          <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+          <%= comment.user.name %><% end %></td>
+      <td><%= comment.comment %></td>
+      <td> <%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %></td>
+    </tr><% end %>
+  </table>
 </div>

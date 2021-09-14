@@ -15,9 +15,12 @@
     <tr>
       <td><%= comment.id %></td>
       <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= comment.user.name %></td>
+      <td><%= link_to admin_user_path(comment.user) do %>
+           <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+           <%= comment.user.name %><% end %></td>
       <td><%= comment.comment %></td>
-      <td><%= comment.topic.title %></td>
+      <td><%= link_to admin_topic_path(comment.topic) do %>
+        <%= comment.topic.title %><% end %></td>
     </tr>
   </tbody><% end %>
   </table>
