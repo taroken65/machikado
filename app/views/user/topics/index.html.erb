@@ -1,6 +1,6 @@
 <div class="container mt-5">
-<h2>トピック一覧</h2>
-  <table class="table">
+<h2 class="topic">トピック一覧</h2>
+  <table class="table mt-3">
      <thead>
       <tr>
        <th>No.</th>
@@ -17,15 +17,17 @@
     <% @topics.each do |topic| %>
     <tr>
       <td><%= topic.id %></td>
-      <td><%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
-          <%= topic.user.name %></td>
+      <td><%= link_to user_path(topic.user) do %>
+          <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
+          <%= topic.user.name %>
+          <% end %></td>
       <td><%= link_to topic_path(topic) do %>
           <%= topic.title %>
           <% end %></td>
       <td><%= topic.body %></td>
       <td><%= topic.age.name %></td>
       <td><%= topic.category.name %></td>
-      <td><%= link_to "#{topic.comments.count} 件", topic_path(topic) %></td>
+      <td><%= "#{topic.comments.count} 件" %></td>
       <td><%= topic.favorites.count %></td>
     </tr>
   </tbody><% end %>

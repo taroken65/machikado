@@ -7,7 +7,7 @@
     <table class="table">
       <tr>
         <th>プロフィール画像</th>
-        <td><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100") %></td>
+        <td><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class:"rounded-circle") %></td>
       </tr>
       <tr>
         <th>ニックネーム</th>
@@ -48,7 +48,7 @@
            <%= topic.created_at.strftime('%Y/%m/%d') %>
           </td>
           <td>
-            <%= link_to admin_topic_path(topic) do %>
+            <%= link_to topic_path(topic) do %>
           　<%= topic.title %>
             <% end %>
           </td>
@@ -67,9 +67,10 @@
           <td>
             <%= topic.favorites.count %>
           </td>
+          <% if current_user == @user %>
           <td>
-            <%= link_to "削除", admin_comment_path(topic), method: :delete, class:"btn btn-outline-success",data: { confirm: '本当に消しますか？' } %>
-          </td>
+            <%= link_to "削除", admin_comment_path(topic), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？'} %>
+          </td><% end %>
         </tr>
         <% end %>
        </tbody>
@@ -94,24 +95,10 @@
          <td><%= link_to topic_path(comment.topic) do %>
              <%= comment.topic.title %><% end %></td>
          <td><% if comment.user == current_user %>
-             <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete %>
+             <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delet, class:"btn btn-danger",data: { confirm: '本当に消しますか？'}  %>
              <% end %></td>
        </tr>
-      </tbody>
-      <% end %>
+      </tbody><% end %>
     </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>

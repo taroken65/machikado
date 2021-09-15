@@ -1,6 +1,6 @@
 <div class="container mt-5">
-<h2>コメント一覧</h2>
-  <table class="table">
+<h2 class="heading">コメント一覧</h2>
+  <table class="table mt-3">
      <thead>
       <tr>
        <th>No.</th>
@@ -16,7 +16,7 @@
       <td><%= comment.id %></td>
       <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to admin_user_path(comment.user) do %>
-           <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+           <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
            <%= comment.user.name %><% end %></td>
       <td><%= comment.comment %></td>
       <td><%= link_to admin_topic_path(comment.topic) do %>

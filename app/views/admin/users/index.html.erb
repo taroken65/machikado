@@ -18,7 +18,7 @@
       <td><%= user.id %></td>
       <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to admin_user_path(user) do %>
-          <%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+          <%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
           <%= user.name %><% end %></td>
       <td><%= user.email %></td>
       <td><%= "#{user.topics.count} 件" %></td>

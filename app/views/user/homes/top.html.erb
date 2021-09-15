@@ -20,6 +20,7 @@
           <span class="age"><%= topic.age.name %></span>
           <p class='text-right'>
             <%= link_to user_path(topic.user) do %>
+              <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "30x30", class:"rounded-circle") %>
               <%= topic.user.name %>
             <% end %>
             <%= topic.created_at.strftime('%Y/%m/%d') %>
@@ -38,7 +39,7 @@
            <% end %>
            <% if ranking.view_counts.count != lastViewCount %>
             <% j = i %>
-            <%= j %>位
+            <span class="ranking"><%= j %>位</span>
             <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -46,7 +47,7 @@
             <% lastViewCount = ranking.view_counts.count %>
            <% else %>
             <% lastViewCount = ranking.view_counts.count %>
-            <%= j %>位
+            <span class="ranking"><%= j %>位</span>
             <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -64,7 +65,7 @@
            <% end %>
            <% if ranking.favorites.count != lastFavorite %>
             <% j = i %>
-            <%= j %>位
+            <span class="ranking2"><%= j %>位</span>
             <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -72,7 +73,7 @@
             <% lastFavorite = ranking.favorites.count %>
            <% else %>
             <% lastFavorite = ranking.favorites.count %>
-            <%= j %>位
+            <span class="ranking2"><%= j %>位</span>
             <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -90,7 +91,7 @@
            <% end %>
            <% if ranking.comments.count != lastComment %>
            <% j = i %>
-           <%= j %>位
+           <span class="ranking"><%= j %>位</span>
            <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -98,7 +99,7 @@
            <% lastComment = ranking.comments.count %>
            <% else %>
            <% lastComment = ranking.comments.count %>
-           <%= j %>位
+           <span class="ranking"><%= j %>位</span>
            <%= link_to topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>

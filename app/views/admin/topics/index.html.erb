@@ -1,6 +1,6 @@
 <div class="container mt-5">
-<h2>トピック一覧</h2>
-  <table class="table">
+<h2 class="heading">トピック一覧</h2>
+  <table class="table mt-3">
      <thead>
       <tr>
        <th>No.</th>
@@ -18,7 +18,7 @@
       <tr>
        <td><%= topic.id %></td>
        <td><%= link_to admin_user_path(topic.user) do %>
-           <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+           <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
            <%= topic.user.name %><% end %></td>
        <td><%= link_to admin_topic_path(topic) do %>
            <%= topic.title %>
