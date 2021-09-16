@@ -18,8 +18,10 @@ class User::TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    unless ViewCount.find_by(user_id: current_user.id, topic_id: @topic.id)
+    if current_user != nil
+      unless ViewCount.find_by(user_id: current_user.id, topic_id: @topic.id)
       current_user.view_counts.create(topic_id: @topic.id)
+      end
     end
     @comment = Comment.new
   end
