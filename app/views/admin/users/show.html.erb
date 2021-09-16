@@ -30,7 +30,7 @@
     </tr>
   </table>
 
-<h2 class="heading mt-5">ユーザートピック</h2>
+<h2 class="heading mt-5">ユーザートピック <span class="small">(全<%= @topics.count %>件)</span></h2>
  <table class="table">
      <thead>
       <tr>
@@ -64,7 +64,7 @@
      <% end %>
   </table>
 
-<h2 class="heading mt-5">ユーザーコメント</h2>
+<h2 class="heading mt-5">ユーザーコメント <span class="small">(全<%= @comments.count %>件)</span></h2>
  <table class="table">
      <thead>
       <tr>

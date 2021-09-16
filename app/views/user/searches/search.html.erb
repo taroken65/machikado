@@ -1,10 +1,12 @@
 <div class="container mt-5">
-  <h2>検索結果：<%= @content %></h2>
+  <h2 class="topic">検索結果：<%= @keyword %></h2>
+   <h3 class="mt-3">該当トピック</h3>
     <table class="table">
      <thead>
       <tr>
        <th>No.</th>
        <th>投稿者</th>
+       <th>投稿日</th>
        <th>タイトル</th>
        <th>本文</th>
        <th>年齢別</th>
@@ -17,10 +19,11 @@
      <% @topics.each do |topic| %>
       <tr>
        <td><%= topic.id %></td>
-       <td><%= link_to admin_user_path(topic.user) do %>
-          <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50") %>
+       <td><%= link_to user_path(topic.user) do %>
+          <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
           <%= topic.user.name %><% end %></td>
-       <td><%= link_to admin_topic_path(topic) do %>
+       <td><%= topic.created_at.strftime('%Y/%m/%d') %></td>
+       <td><%= link_to topic_path(topic) do %>
           <%= topic.title %>
           <% end %></td>
        <td><%= topic.body %></td>
@@ -31,4 +34,31 @@
       </tr>
      </tbody><% end %>
     </table>
+
+      <h3 class="mt-3">該当コメント</h3>
+       <table class="table">
+        <thead>
+         <tr>
+          <th>No.</th>
+          <th>投稿者</th>
+          <th>投稿日</th>
+          <th>コメント</th>
+          <th>トピックタイトル</th>
+         </tr>
+        </thead>
+        <tbody>
+        <% @comments.each do |comment| %>
+         <tr>
+          <td><%= comment.id %></td>
+          <td><%= link_to user_path(comment.user) do %>
+              <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %><br>
+              <%= comment.user.name %><% end %></td>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to topic_path(comment.topic) do %>
+              <%= comment.topic.title %>
+              <% end %></td>
+         </tr>
+        </tbody><% end %>
+       </table>
 </div>

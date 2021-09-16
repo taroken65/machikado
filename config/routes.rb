@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 root to: 'user/homes#top'
 get "about" => "user/homes#about"
-get "/search", to: "searches#search"
+
 
 
 # 会員側のルーティング設定

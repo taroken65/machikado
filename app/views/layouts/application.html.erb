@@ -48,7 +48,7 @@
            <ul class="navbar-nav ml-auto">
             <li>
               <%= form_with url: search_path, method: :get, class: "search-form", local: true do |f| %>
-              <%= f.text_field :content, size: "18" %>
+              <%= f.text_field :keyword, value: @keyword %>
               <%= submit_tag '検索' %>
               <% end %>
             </li>

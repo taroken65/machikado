@@ -10,13 +10,8 @@ class Topic < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def self.search_for(content, method)
-    if method == "perfect"
-      Topic.where(name: content)
-    else
-      Topic.where("name LIKE ?", "%" + content + "%")
-    end
+  def self.search(keyword)
+  where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
   end
-
 
 end
