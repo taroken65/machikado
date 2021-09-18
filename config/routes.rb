@@ -21,6 +21,8 @@ get "about" => "user/homes#about"
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     end
+  get 'topics/category/:id', to: 'topics#category' , as: 'topic/category'
+  get 'topics/age/:id', to: 'topics#age' , as: 'topic/age'
  end
 
 

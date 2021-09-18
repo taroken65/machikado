@@ -32,6 +32,16 @@ class User::TopicsController < ApplicationController
     redirect_to user_path(topic.user)
   end
 
+  def category
+    @category = Category.find(params[:id])
+    @topics = Topic.includes(:category).where(category_id: @category)
+  end
+
+  def age
+    @age =Age.find(params[:id])
+    @topics = Topic.includes(:age).where(age_id: @age)
+  end
+
   private
 
   def topic_params

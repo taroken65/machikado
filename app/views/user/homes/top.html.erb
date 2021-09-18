@@ -8,6 +8,10 @@
       </div>
 
       <h2 class='mt-5'>新着トピック</h2>
+      <% if user_signed_in? %>
+       <div class="text-right">
+        <%= link_to "トピック一覧", topics_path, class:"btn btn-outline-success" %>
+       </div><% end %>
       <% @topics.first(10).each do |topic|%>
         <div class="border-top">
           <p>
@@ -16,8 +20,14 @@
             <% end %>
           </p>
           <p><%= topic.body %></p>
-          <span class="category"><%= topic.category.name %></span>
-          <span class="age"><%= topic.age.name %></span>
+          <span class="category">
+              <%= link_to topic_category_path(topic.category) do %>
+              <%= topic.category.name %><% end %>
+          </span>
+          <span class="age">
+              <%= link_to topic_age_path(topic.age) do %>
+              <%= topic.age.name %><% end %>
+          </span>
           <p class='text-right'>
             <%= link_to user_path(topic.user) do %>
               <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "30x30", class:"rounded-circle") %>
@@ -108,6 +118,57 @@
             <br>
            <% end %>
 
+      <h5 class="border-bottom mt-4"><b>トピック数ランキング</b></h5>
+         <% lastTopic = 0 %>
+          <% j = 1 %>
+           <% @user_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastTopic = ranking.topics.count %>
+           <% end %>
+           <% if ranking.topics.count != lastTopic %>
+            <% j = i %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            トピック数：<%= ranking.topics.count %>
+            <% lastTopic = ranking.topics.count %>
+           <% else %>
+            <% lastTopic = ranking.topics.count %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            トピック数：<%= ranking.topics.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+       <h5 class="border-bottom mt-4"><b>コメント投稿数ランキング</b></h5>
+         <% lastUserComment = 0 %>
+          <% j = 1 %>
+           <% @user_comment_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+           <% lastUserComment = ranking.comments.count %>
+           <% end %>
+           <% if ranking.comments.count != lastComment %>
+           <% j = i %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            コメント数：<%= ranking.comments.count %>
+           <% lastUserComment = ranking.comments.count %>
+           <% else %>
+           <% lastUserComment = ranking.comments.count %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+           コメント数：<%= ranking.comments.count %>
+            <% end %>
+            <br>
+           <% end %>
     </div>
   </div>
 </div>
