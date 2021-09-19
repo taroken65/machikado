@@ -151,7 +151,7 @@
            <% if i == 1 %>
            <% lastUserComment = ranking.comments.count %>
            <% end %>
-           <% if ranking.comments.count != lastComment %>
+           <% if ranking.comments.count != lastUserComment %>
            <% j = i %>
            <span class="ranking"><%= j %>位</span>
            <%= link_to user_path(ranking) do %>

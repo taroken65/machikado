@@ -23,6 +23,10 @@ get "about" => "user/homes#about"
     end
   get 'topics/category/:id', to: 'topics#category' , as: 'topic/category'
   get 'topics/age/:id', to: 'topics#age' , as: 'topic/age'
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
  end
 
 
