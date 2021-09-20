@@ -43,5 +43,7 @@ get "about" => "user/homes#about"
   resources :topics, only: [:index,:show,:destroy]
   resources :users, only: [:index,:show,:edit,:update,:destroy]
   resources :comments, only: [:index,:show,:destroy]
+  get '', to: 'topics#top'
+  get 'topic/today', to: 'topics#today', as: 'topic/today'
  end
 end

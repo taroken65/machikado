@@ -15,7 +15,7 @@
        <header class="sticky-top shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b3424a;" >
           <div class="container">
-            <a class="navbar-brand p-3 text-white" href="/"><b>まちかど広場</b></a>
+            <a class="navbar-brand p-3 text-white" href="/admin"><b>まちかど広場</b></a>
              <ul class="navbar-nav ml-auto">
                <li>
                 <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-light' %>
@@ -53,10 +53,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "トピック一覧", topics_path, class: "btn btn-outline-light ml-2" %>
-            </li>
-            <li>
-              <%= link_to "トピック作成", new_topic_path, class: "btn btn-outline-light ml-2" %>
+              <%= link_to "トピック作成", new_topic_path, class: "btn btn-outline-light ml-2 small" %>
             </li>
             <li>
               <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-light ml-2" %>

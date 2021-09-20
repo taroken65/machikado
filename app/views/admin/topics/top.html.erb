@@ -1,0 +1,116 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-8">
+      <h2 class='heading mt-5'>トピック数レポート</h2>
+       <div class="table_width">
+        <table class='table table-bordered'>
+         <thead>
+          <tr>
+           <th>今日の投稿数</th>
+           <th>前日の投稿数</th>
+           <th>前日比</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+             <%= link_to admin_topic_today_path do %>
+             <%= @today_topic.count %><% end %>
+           </td>
+           <td><%= @yesterday_topic.count %></td>
+           <td>
+            <% if @yesterday_topic.count == 0 %>
+              前日の投稿が0のため計算できません
+            <% else %>
+              <% @the_day_before =   @today_topic.count / @yesterday_topic.count.to_f  %>
+              <%= (@the_day_before * 100).round %>%
+            <% end %>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="table_width">
+       <table class='table table-bordered'>
+        <thead>
+         <tr>
+          <th>今週の投稿数</th>
+          <th>前週の投稿数</th>
+          <th>前週比</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td><%= @this_week_topic.count %></td>
+          <td><%= @last_week_topic.count %></td>
+          <td>
+            <% if @last_week_topic.count == 0 %>
+              前週の投稿が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_topic.count / @last_week_topic.count.to_f  %>
+              <%= (@the_week_before * 100).round %>%
+            <% end %>
+          </td>
+         </tr>
+       </tbody>
+      </table>
+     </div>
+
+     <h2 class='heading mt-5'>ユーザー数レポート</h2>
+       <div class="table_width">
+        <table class='table table-bordered'>
+         <thead>
+          <tr>
+           <th>今日の新規ユーザー数</th>
+           <th>前日の新規ユーザー数</th>
+           <th>前日比</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+             <%= link_to admin_topic_today_path do %>
+             <%= @today_user.count %><% end %>
+           </td>
+           <td><%= @yesterday_user.count %></td>
+           <td>
+            <% if @yesterday_user.count == 0 %>
+              前日の投稿が0のため計算できません
+            <% else %>
+              <% @the_day_before =   @today_user.count / @yesterday_user.count.to_f  %>
+              <%= (@the_day_before * 100).round %>%
+            <% end %>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="table_width">
+       <table class='table table-bordered'>
+        <thead>
+         <tr>
+          <th>今週の新規ユーザー数</th>
+          <th>前週の新規ユーザー数</th>
+          <th>前週比</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td><%= @this_week_user.count %></td>
+          <td><%= @last_week_user.count %></td>
+          <td>
+            <% if @last_week_user.count == 0 %>
+              前週の投稿が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_user.count / @last_week_user.count.to_f  %>
+              <%= (@the_week_before * 100).round %>%
+            <% end %>
+          </td>
+         </tr>
+       </tbody>
+      </table>
+     </div>
+
+    </div>
+ </div>
+</div>

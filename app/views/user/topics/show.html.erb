@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <h2 class="border-bottom topic">トピック詳細</h2>
+  <h2 class="topic">トピック詳細</h2>
     <% if current_user == @topic.user %>
     <div class="text-right">
       <%= link_to "削除する", topic_path(@topic), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？' } %>
@@ -14,19 +14,17 @@
        </span>
         <h3 class="title mt-3"><%= @topic.title %></h3>
          <p><%= @topic.body %></p>
-          <% if user_signed_in? %>
-           <% if @topic.favorited_by?(current_user) %>
-           <%= link_to @topic.favorites.count, topic_favorites_path(@topic), method: :delete, local: true, class: "fas fa-heart heart_red" %>
-           <% else %>
-           <%= link_to @topic.favorites.count, topic_favorites_path(@topic), method: :post, local: true, class: "fas fa-heart heart_blue" %>
-           <% end %>
-           <% @topic.favorites.each do |favorite| %>
-           <%= link_to user_path(favorite.user) do %><%= attachment_image_tag(favorite.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "30x30", class:"rounded-circle") %>
-           <% end %>
-           <% end %>
-          <% else %>
+         <% if user_signed_in? %>
+         <div id="favorite_buttons_<%= @topic.id %>">
+          <%= render "user/favorites/favorites", topic: @topic %>
+
+
+
+         <% else %>
            いいね数：<%= @topic.favorites.count %>
-          <% end %>
+         <% end %>
+         </div>
+
           <p class='text-right'>
            <%= link_to user_path(@topic.user) do %>
            <%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>

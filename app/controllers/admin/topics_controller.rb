@@ -13,6 +13,25 @@ class Admin::TopicsController < ApplicationController
    redirect_to admin_topics_path
   end
 
+  def top
+    @topics = Topic.all
+    @today_topic =  @topics.created_today
+    @yesterday_topic = @topics.created_yesterday
+    @this_week_topic = @topics.created_this_week
+    @last_week_topic = @topics.created_last_week
+
+    @users = User.all
+    @today_user =  @users.created_today
+    @yesterday_user = @users.created_yesterday
+    @this_week_user = @users.created_this_week
+    @last_week_user= @users.created_last_week
+  end
+
+  def today
+    @topics = Topic.all
+    @today_topics =  @topics.created_today
+  end
+
   private
 
   def topic_params
