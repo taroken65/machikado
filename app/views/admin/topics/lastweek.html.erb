@@ -1,5 +1,5 @@
 <div class="container mt-5">
-<h2 class="heading">今日のトピック一覧</h2>
+<h2 class="heading">前週のトピック一覧</h2>
   <table class="table mt-3">
      <thead>
       <tr>
@@ -15,7 +15,7 @@
       </tr>
      </thead>
      <tbody>
-     <% @today_topics.each do |topic| %>
+     <% @last_week_topics.each do |topic| %>
       <tr>
        <td><%= topic.id %></td>
        <td><%= link_to admin_user_path(topic.user) do %>

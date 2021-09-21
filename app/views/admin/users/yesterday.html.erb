@@ -1,6 +1,6 @@
 <div class="container mt-5">
-<h2 class="heading">ユーザー一覧 <span class="small">(全<%= @users.count %>件)</span></h2>
-  <table class="table mt-3">
+<h2 class="heading">昨日の新規ユーザー一覧</h2>
+   <table class="table mt-3">
      <thead>
       <tr>
        <th>No.</th>
@@ -13,7 +13,7 @@
       </tr>
       </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @yesterday_users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
       <td><%= user.created_at.strftime('%Y/%m/%d') %></td>

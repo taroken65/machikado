@@ -1,14 +1,43 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-8">
-      <h2 class='heading mt-5'>トピック数レポート</h2>
+     <h2 class='heading'>サマリー</h2>
        <div class="table_width">
         <table class='table table-bordered'>
          <thead>
           <tr>
-           <th>今日の投稿数</th>
-           <th>前日の投稿数</th>
-           <th>前日比</th>
+           <th>累計トピック数</th>
+           <th>累計ユーザー数</th>
+           <th>累計コメント数</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+             <%= link_to admin_topics_path do %>
+             <%= @topics.count %><% end %>
+           </td>
+           <td>
+             <%= link_to admin_users_path do %>
+             <%= @users.count %><% end %>
+            </td>
+           <td>
+             <%= link_to admin_comments_path do %>
+             <%= @comments.count %><% end %>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+
+      <h2 class='heading mt-5'>トピック数詳細</h2>
+       <div class="table_width">
+        <table class='table table-bordered'>
+         <thead>
+          <tr>
+           <th>今日のトピック数</th>
+           <th>前日のトピック数</th>
+           <th>累計トピック数</th>
           </tr>
          </thead>
          <tbody>
@@ -17,14 +46,13 @@
              <%= link_to admin_topic_today_path do %>
              <%= @today_topic.count %><% end %>
            </td>
-           <td><%= @yesterday_topic.count %></td>
            <td>
-            <% if @yesterday_topic.count == 0 %>
-              前日の投稿が0のため計算できません
-            <% else %>
-              <% @the_day_before =   @today_topic.count / @yesterday_topic.count.to_f  %>
-              <%= (@the_day_before * 100).round %>%
-            <% end %>
+             <%= link_to admin_topic_yesterday_path do %>
+             <%= @yesterday_topic.count %><% end %>
+            </td>
+           <td>
+             <%= link_to admin_topics_path do %>
+             <%= @topics.count %><% end %>
           </td>
          </tr>
         </tbody>
@@ -34,15 +62,21 @@
        <table class='table table-bordered'>
         <thead>
          <tr>
-          <th>今週の投稿数</th>
-          <th>前週の投稿数</th>
+          <th>今週のトピック数</th>
+          <th>前週のトピック数</th>
           <th>前週比</th>
          </tr>
         </thead>
         <tbody>
          <tr>
-          <td><%= @this_week_topic.count %></td>
-          <td><%= @last_week_topic.count %></td>
+          <td>
+           <%= link_to admin_topic_thisweek_path do %>
+           <%= @this_week_topic.count %><% end %>
+          </td>
+          <td>
+           <%= link_to admin_topic_lastweek_path do %>
+           <%= @last_week_topic.count %><% end %>
+           </td>
           <td>
             <% if @last_week_topic.count == 0 %>
               前週の投稿が0のため計算できません
@@ -56,30 +90,29 @@
       </table>
      </div>
 
-     <h2 class='heading mt-5'>ユーザー数レポート</h2>
+     <h2 class='heading mt-5'>ユーザー数詳細</h2>
        <div class="table_width">
         <table class='table table-bordered'>
          <thead>
           <tr>
            <th>今日の新規ユーザー数</th>
            <th>前日の新規ユーザー数</th>
-           <th>前日比</th>
+           <th>累計ユーザー数</th>
           </tr>
          </thead>
          <tbody>
           <tr>
            <td>
-             <%= link_to admin_topic_today_path do %>
+             <%= link_to admin_user_today_path do %>
              <%= @today_user.count %><% end %>
            </td>
-           <td><%= @yesterday_user.count %></td>
            <td>
-            <% if @yesterday_user.count == 0 %>
-              前日の投稿が0のため計算できません
-            <% else %>
-              <% @the_day_before =   @today_user.count / @yesterday_user.count.to_f  %>
-              <%= (@the_day_before * 100).round %>%
-            <% end %>
+             <%= link_to admin_user_yesterday_path do %>
+             <%= @yesterday_user.count %><% end %>
+            </td>
+           <td>
+             <%= link_to admin_users_path do %>
+             <%= @users.count %><% end %>
           </td>
          </tr>
         </tbody>
@@ -96,8 +129,14 @@
         </thead>
         <tbody>
          <tr>
-          <td><%= @this_week_user.count %></td>
-          <td><%= @last_week_user.count %></td>
+          <td>
+           <%= link_to admin_user_thisweek_path do %>
+           <%= @this_week_user.count %><% end %>
+          </td>
+          <td>
+           <%= link_to admin_user_lastweek_path do %>
+           <%= @last_week_user.count %><% end %>
+          </td>
           <td>
             <% if @last_week_user.count == 0 %>
               前週の投稿が0のため計算できません
@@ -110,7 +149,199 @@
        </tbody>
       </table>
      </div>
+     <h2 class='heading mt-5'>コメント数詳細</h2>
+       <div class="table_width">
+        <table class='table table-bordered'>
+         <thead>
+          <tr>
+           <th>今日の新規コメント数</th>
+           <th>前日の新規コメント数</th>
+           <th>累計コメント数</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+             <%= link_to admin_comment_today_path do %>
+             <%= @today_comment.count %><% end %>
+           </td>
+           <td>
+             <%= link_to admin_user_yesterday_path do %>
+             <%= @yesterday_comment.count %><% end %>
+            </td>
+           <td>
+             <%= link_to admin_comments_path do %>
+             <%= @comments.count %><% end %>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="table_width">
+       <table class='table table-bordered'>
+        <thead>
+         <tr>
+          <th>今週の新規コメント数</th>
+          <th>前週の新規コメント数</th>
+          <th>前週比</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <%= link_to admin_user_thisweek_path do %>
+           <%= @this_week_comment.count %><% end %>
+          </td>
+          <td>
+           <%= link_to admin_user_lastweek_path do %>
+           <%= @last_week_comment.count %><% end %>
+          </td>
+          <td>
+            <% if @last_week_comment.count == 0 %>
+              前週の投稿が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_comment.count / @last_week_comment.count.to_f  %>
+              <%= (@the_week_before * 100).round %>%
+            <% end %>
+          </td>
+         </tr>
+       </tbody>
+      </table>
+     </div>
 
+    </div>
+
+
+      <div class="col-3 ml-3">
+       <h5 class="border-bottom"><b>アクセス数ランキング</b></h5>
+         <% lastViewCount = 0 %>
+          <% j = 1 %>
+           <% @view_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastViewCount = ranking.view_counts.count %>
+           <% end %>
+           <% if ranking.view_counts.count != lastViewCount %>
+            <% j = i %>
+            <span class="ranking"><%= j %>位</span>
+            <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            閲覧数：<%= ranking.view_counts.count %>
+            <% lastViewCount = ranking.view_counts.count %>
+           <% else %>
+            <% lastViewCount = ranking.view_counts.count %>
+            <span class="ranking"><%= j %>位</span>
+            <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            閲覧数：<%= ranking.view_counts.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+       <h5 class="border-bottom mt-4"><b>いいね数ランキング</b></h5>
+         <% lastFavorite = 0 %>
+          <% j = 1 %>
+           <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastFavorite = ranking.favorites.count %>
+           <% end %>
+           <% if ranking.favorites.count != lastFavorite %>
+            <% j = i %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            いいね数：<%= ranking.favorites.count %>
+            <% lastFavorite = ranking.favorites.count %>
+           <% else %>
+            <% lastFavorite = ranking.favorites.count %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            いいね数：<%= ranking.favorites.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+      <h5 class="border-bottom mt-4"><b>コメント数ランキング</b></h5>
+         <% lastComment = 0 %>
+          <% j = 1 %>
+           <% @comment_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+           <% lastComment = ranking.comments.count %>
+           <% end %>
+           <% if ranking.comments.count != lastComment %>
+           <% j = i %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+            コメント数：<%= ranking.comments.count %>
+           <% lastComment = ranking.comments.count %>
+           <% else %>
+           <% lastComment = ranking.comments.count %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to admin_topic_path(ranking) do %>
+              <%= ranking.title %>
+            <% end %>
+           コメント数：<%= ranking.comments.count %>
+            <% end %>
+            <br>
+           <% end %>
+
+      <h5 class="border-bottom mt-4"><b>トピック数ランキング</b></h5>
+         <% lastTopic = 0 %>
+          <% j = 1 %>
+           <% @user_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+            <% lastTopic = ranking.topics.count %>
+           <% end %>
+           <% if ranking.topics.count != lastTopic %>
+            <% j = i %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to admin_user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            トピック数：<%= ranking.topics.count %>
+            <% lastTopic = ranking.topics.count %>
+           <% else %>
+            <% lastTopic = ranking.topics.count %>
+            <span class="ranking2"><%= j %>位</span>
+            <%= link_to admin_user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            トピック数：<%= ranking.topics.count %>
+           <% end %>
+            <br>
+           <% end %>
+
+       <h5 class="border-bottom mt-4"><b>コメント投稿数ランキング</b></h5>
+         <% lastUserComment = 0 %>
+          <% j = 1 %>
+           <% @user_comment_ranks.each.with_index(1) do |ranking, i| %>
+           <% if i == 1 %>
+           <% lastUserComment = ranking.comments.count %>
+           <% end %>
+           <% if ranking.comments.count != lastUserComment %>
+           <% j = i %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to admin_user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+            コメント数：<%= ranking.comments.count %>
+           <% lastUserComment = ranking.comments.count %>
+           <% else %>
+           <% lastUserComment = ranking.comments.count %>
+           <span class="ranking"><%= j %>位</span>
+           <%= link_to admin_user_path(ranking) do %>
+              <%= ranking.name %>
+            <% end %>
+           コメント数：<%= ranking.comments.count %>
+            <% end %>
+            <br>
+           <% end %>
     </div>
  </div>
 </div>

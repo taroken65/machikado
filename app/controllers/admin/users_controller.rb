@@ -19,6 +19,26 @@ class Admin::UsersController < ApplicationController
    redirect_to admin_user_path(user)
   end
 
+  def today
+   @users = User.all
+   @today_users =  @users.created_today.page(params[:page]).reverse_order
+  end
+
+  def yesterday
+   @users = User.all
+   @yesterday_users =  @users.created_yesterday.page(params[:page]).reverse_order
+  end
+
+  def thisweek
+   @users = User.all
+   @this_week_users =  @users.created_this_week.page(params[:page]).reverse_order
+  end
+
+  def lastweek
+   @users = User.all
+   @last_week_users =  @users.created_last_week.page(params[:page]).reverse_order
+  end
+
   private
 
   def user_params

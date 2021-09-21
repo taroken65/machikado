@@ -83,7 +83,7 @@
       <td><%= comment.comment %></td>
       <td><%= link_to admin_topic_path(comment.topic) do %>
         <%= comment.topic.title %><% end %></td>
-      <td><%= link_to "削除", admin_comment_path(comment.topic), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？' } %></td>
+      <td><%= link_to "削除", admin_topic_comment_path(comment.topic, comment), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？' } %></td>
     </tr>
   </tbody>
    <% end %>

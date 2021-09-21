@@ -40,10 +40,20 @@ get "about" => "user/homes#about"
  namespace :admin do
   resources :categories, :except => [:new,:show,:destroy]
   resources :ages, :except => [:new,:show,:destroy]
-  resources :topics, only: [:index,:show,:destroy]
+  resources :topics, only: [:index,:show,:destroy] do
+   resources :comments, only: [:destroy]
+   end
   resources :users, only: [:index,:show,:edit,:update,:destroy]
-  resources :comments, only: [:index,:show,:destroy]
+  resources :comments, only: [:index]
   get '', to: 'topics#top'
   get 'topic/today', to: 'topics#today', as: 'topic/today'
+  get 'topic/yesterday', to: 'topics#yesterday', as: 'topic/yesterday'
+  get 'topic/thisweek', to: 'topics#thisweek', as: 'topic/thisweek'
+  get 'topic/lastweek', to: 'topics#lastweek', as: 'topic/lastweek'
+  get 'user/today', to: 'users#today', as: 'user/today'
+  get 'user/yesterday', to: 'users#yesterday', as: 'user/yesterday'
+  get 'user/thisweek', to: 'users#thisweek', as: 'user/thisweek'
+  get 'user/lastweek', to: 'users#lastweek', as: 'user/lastweek'
+  get 'comment/today', to: 'comments#today', as: 'comment/today'
  end
 end
