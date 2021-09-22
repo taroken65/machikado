@@ -5,9 +5,10 @@
 .main-visual {
   width: 100%; /* 横幅いっぱい */
   height: 300px; /* 高さ300px */
-  background-image: image-url("back.jpg");
-  background-size: cover;
+  background-image: image-url("park.jpg");
+  background-size: contain;
   background-position: center;
+  background-repeat:  no-repeat;
  }
 
  .category {
@@ -50,4 +51,17 @@
 
 .navi-menu-text {
   font-size: 11px;
+}
+
+.side {
+  font-size:16px;
+  color: #666666;/*文字色*/
+  padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #26896D;/*上線*/
+  border-bottom: solid 3px #26896D;/*下線*/
+}
+
+.side-category {
+ line-height: 0.8; /*文の行高*/
+  padding: 0.5em 0; /*前後の文との余白*/
 }
