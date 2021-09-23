@@ -62,8 +62,8 @@
   <h2 class="topic mt-5">コメント投稿</h2>
    <div class="mt-3">
     <%= form_with(model:[@topic, @comment], local: true) do |f| %>
-    <%= f.text_area :comment, size: '10x3', class: 'form-control', placeholder: "コメントをここに" %><br>
-    <%= f.submit "投稿する" %>
+    <%= f.text_area :comment, size: '10x3', class: 'form-control', placeholder: "コメント内容を入力してください。" %><br>
+    <%= f.submit "投稿する",class:"btn btn-success" %>
     <% end %>
    </div>
 

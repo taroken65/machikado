@@ -30,8 +30,12 @@
           <%= topic.title %>
           <% end %></td>
       <td><%= topic.body %></td>
-      <td><%= topic.age.name %></td>
-      <td><%= topic.category.name %></td>
+      <td><%= link_to topic_age_path(topic.age) do %>
+          <%= topic.age.name %>
+          <% end %></td>
+      <td><%= link_to topic_category_path(topic.category) do %>
+          <%= topic.category.name %>
+          <% end %></td>
       <td><%= "#{topic.comments.count} 件" %></td>
       <td><%= topic.favorites.count %></td>
     </tr>

@@ -5,7 +5,7 @@
 .main-visual {
   width: 100%; /* 横幅いっぱい */
   height: 300px; /* 高さ300px */
-  background-image: image-url("park.jpg");
+  background-image: image-url("hiroba.jpg");
   background-size: contain;
   background-position: center;
   background-repeat:  no-repeat;
@@ -14,7 +14,7 @@
  .category {
   display: inline-block;
   padding: 5px 8px;
-  background-color: #acabab;
+  background-color: #90CE9C;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
@@ -23,7 +23,7 @@
 .age {
   display: inline-block;
   padding: 5px 8px;
-  background-color: #005739;
+  background-color: #A6C78E;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
@@ -33,7 +33,7 @@
   display: inline-block;
   padding: 5px 8px;
   margin:1px;
-  background-color: #acabab;
+  background-color: #90CE9C;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
@@ -43,7 +43,7 @@
   display: inline-block;
   padding: 5px 8px;
   margin:1px;
-  background-color: #005739;
+  background-color: #A6C78E;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
@@ -57,11 +57,15 @@
   font-size:16px;
   color: #666666;/*文字色*/
   padding: 0.5em 0;/*上下の余白*/
-  border-top: solid 3px #26896D;/*上線*/
-  border-bottom: solid 3px #26896D;/*下線*/
+  border-top: solid 3px #009D5B;/*上線*/
+  border-bottom: solid 3px #009D5B;/*下線*/
 }
 
 .side-category {
- line-height: 0.8; /*文の行高*/
+  line-height: 0.8; /*文の行高*/
   padding: 0.5em 0; /*前後の文との余白*/
+}
+
+.list-category {
+ margin-left:20px;
 }

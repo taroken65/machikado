@@ -55,5 +55,7 @@ get "about" => "user/homes#about"
   get 'user/thisweek', to: 'users#thisweek', as: 'user/thisweek'
   get 'user/lastweek', to: 'users#lastweek', as: 'user/lastweek'
   get 'comment/today', to: 'comments#today', as: 'comment/today'
+  get 'topics/category/:id', to: 'topics#category' , as: 'topic/category'
+  get 'topics/age/:id', to: 'topics#age' , as: 'topic/age'
  end
 end

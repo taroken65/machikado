@@ -13,6 +13,16 @@ class Admin::TopicsController < ApplicationController
    redirect_to admin_topics_path
   end
 
+  def category
+    @category = Category.find(params[:id])
+    @topics = Topic.includes(:category).where(category_id: @category).page(params[:page]).reverse_order
+  end
+
+  def age
+    @age =Age.find(params[:id])
+    @topics = Topic.includes(:age).where(age_id: @age).page(params[:page]).reverse_order
+  end
+
   def top
     @topics = Topic.all
     @today_topic =  @topics.created_today
@@ -31,6 +41,9 @@ class Admin::TopicsController < ApplicationController
     @yesterday_comment = @comments.created_yesterday
     @this_week_comment = @comments.created_this_week
     @last_week_comment = @comments.created_last_week
+
+    @categories = Category.all
+    @ages = Age.all
 
     @view_ranks = Topic.find(ViewCount.group(:topic_id).order('count(topic_id) desc').limit(7).pluck(:topic_id))
     @favorite_ranks = Topic.find(Favorite.group(:topic_id).order('count(topic_id) desc').limit(7).pluck(:topic_id))
