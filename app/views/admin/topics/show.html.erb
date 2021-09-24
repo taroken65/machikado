@@ -3,8 +3,12 @@
   <div class="text-right">
    <%= link_to "削除する", admin_topic_path(@topic), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？' } %>
   </div>
-  <span class="category mt-5"><%= @topic.category.name %></span>
-  <span class="age"><%= @topic.age.name %></span>
+  <span class="admin-side-category mt-5">
+   <%= @topic.category.name %>
+  </span>
+  <span class="admin-age">
+   <%= @topic.age.name %>
+  </span>
   　<h3 class="title mt-3"><%= @topic.title %></h3>
       <p><%= @topic.body %></p>
       <p>いいね数：<%= @topic.favorites.count %>

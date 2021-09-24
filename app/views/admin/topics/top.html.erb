@@ -230,7 +230,7 @@
 　  </div>
 
       <div class="col-3 ml-3">
-       <h5 class="border-bottom"><b>アクセス数ランキング</b></h5>
+       <h5 class="admin-side"><b>アクセス数ランキング</b></h5>
          <% lastViewCount = 0 %>
           <% j = 1 %>
            <% @view_ranks.each.with_index(1) do |ranking, i| %>
@@ -239,7 +239,7 @@
            <% end %>
            <% if ranking.view_counts.count != lastViewCount %>
             <% j = i %>
-            <span class="ranking"><%= j %>位</span>
+            <span class="ranking3"><%= j %>位</span>
             <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -247,7 +247,7 @@
             <% lastViewCount = ranking.view_counts.count %>
            <% else %>
             <% lastViewCount = ranking.view_counts.count %>
-            <span class="ranking"><%= j %>位</span>
+            <span class="ranking3"><%= j %>位</span>
             <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -256,7 +256,7 @@
             <br>
            <% end %>
 
-       <h5 class="border-bottom mt-4"><b>いいね数ランキング</b></h5>
+       <h5 class="admin-side mt-4"><b>いいね数ランキング</b></h5>
          <% lastFavorite = 0 %>
           <% j = 1 %>
            <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
@@ -265,7 +265,7 @@
            <% end %>
            <% if ranking.favorites.count != lastFavorite %>
             <% j = i %>
-            <span class="ranking2"><%= j %>位</span>
+            <span class="ranking4"><%= j %>位</span>
             <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -273,7 +273,7 @@
             <% lastFavorite = ranking.favorites.count %>
            <% else %>
             <% lastFavorite = ranking.favorites.count %>
-            <span class="ranking2"><%= j %>位</span>
+            <span class="ranking4"><%= j %>位</span>
             <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -282,7 +282,7 @@
             <br>
            <% end %>
 
-      <h5 class="border-bottom mt-4"><b>コメント数ランキング</b></h5>
+      <h5 class="admin-side mt-4"><b>コメント数ランキング</b></h5>
          <% lastComment = 0 %>
           <% j = 1 %>
            <% @comment_ranks.each.with_index(1) do |ranking, i| %>
@@ -291,7 +291,7 @@
            <% end %>
            <% if ranking.comments.count != lastComment %>
            <% j = i %>
-           <span class="ranking"><%= j %>位</span>
+           <span class="ranking3"><%= j %>位</span>
            <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -299,7 +299,7 @@
            <% lastComment = ranking.comments.count %>
            <% else %>
            <% lastComment = ranking.comments.count %>
-           <span class="ranking"><%= j %>位</span>
+           <span class="ranking3"><%= j %>位</span>
            <%= link_to admin_topic_path(ranking) do %>
               <%= ranking.title %>
             <% end %>
@@ -308,7 +308,7 @@
             <br>
            <% end %>
 
-      <h5 class="border-bottom mt-4"><b>トピック数ランキング</b></h5>
+      <h5 class="admin-side mt-4"><b>トピック数ランキング</b></h5>
          <% lastTopic = 0 %>
           <% j = 1 %>
            <% @user_ranks.each.with_index(1) do |ranking, i| %>
@@ -317,7 +317,7 @@
            <% end %>
            <% if ranking.topics.count != lastTopic %>
             <% j = i %>
-            <span class="ranking2"><%= j %>位</span>
+            <span class="ranking4"><%= j %>位</span>
             <%= link_to admin_user_path(ranking) do %>
               <%= ranking.name %>
             <% end %>
@@ -325,7 +325,7 @@
             <% lastTopic = ranking.topics.count %>
            <% else %>
             <% lastTopic = ranking.topics.count %>
-            <span class="ranking2"><%= j %>位</span>
+            <span class="ranking4"><%= j %>位</span>
             <%= link_to admin_user_path(ranking) do %>
               <%= ranking.name %>
             <% end %>
@@ -334,7 +334,7 @@
             <br>
            <% end %>
 
-       <h5 class="border-bottom mt-4"><b>コメント投稿数ランキング</b></h5>
+       <h5 class="admin-side mt-4"><b>コメント投稿数ランキング</b></h5>
          <% lastUserComment = 0 %>
           <% j = 1 %>
            <% @user_comment_ranks.each.with_index(1) do |ranking, i| %>
@@ -343,7 +343,7 @@
            <% end %>
            <% if ranking.comments.count != lastUserComment %>
            <% j = i %>
-           <span class="ranking"><%= j %>位</span>
+           <span class="ranking3"><%= j %>位</span>
            <%= link_to admin_user_path(ranking) do %>
               <%= ranking.name %>
             <% end %>
@@ -351,7 +351,7 @@
            <% lastUserComment = ranking.comments.count %>
            <% else %>
            <% lastUserComment = ranking.comments.count %>
-           <span class="ranking"><%= j %>位</span>
+           <span class="ranking3"><%= j %>位</span>
            <%= link_to admin_user_path(ranking) do %>
               <%= ranking.name %>
             <% end %>

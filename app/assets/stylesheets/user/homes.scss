@@ -69,3 +69,49 @@
 .list-category {
  margin-left:20px;
 }
+
+.admin-side {
+ font-size:16px;
+ color: #666666;/*文字色*/
+ padding: 0.5em 0;/*上下の余白*/
+ border-top: solid 3px #b3424a;/*上線*/
+ border-bottom: solid 3px #b3424a;/*下線*/
+}
+
+.ranking3 {
+  display: inline-block;
+  padding: 5px 8px;
+  margin:1px;
+  background-color: #F7A3A9;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.ranking4 {
+  display: inline-block;
+  padding: 5px 8px;
+  margin:1px;
+  background-color: #ED6366;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.admin-side-category {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #F7A3A9;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.admin-age {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #ED6366;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
