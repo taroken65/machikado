@@ -45,6 +45,9 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #009D5B;" >
          <div class="container">
           <a class="navbar-brand p-3 text-white" href="/"><b>まちかど広場</b></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+           </button>
            <ul class="navbar-nav ml-auto">
             <li>
               <%= form_with url: search_path, method: :get, class: "search-form", local: true do |f| %>
@@ -74,6 +77,10 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26896D;" >
          <div class="container">
           <a class="navbar-brand p-3 text-white" href="/"><b>まちかど広場</b></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNavDropdown">
            <ul class="navbar-nav ml-auto">
             <li>
              <%= link_to "About", about_path, class: 'btn btn-outline-light' %>
@@ -88,6 +95,7 @@
              <%= link_to "お問い合わせ", new_contact_path, class: 'btn btn-outline-light ml-2' %>
             </li>
            </ul>
+           </div>
         </div>
        </nav>
       </header>
