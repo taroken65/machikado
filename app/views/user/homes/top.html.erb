@@ -9,12 +9,12 @@
         </div>
       </div>
 
-      <h2 class='mt-5 topic'>新着トピック</h2>
-      <% if user_signed_in? %>
+      <div class="mb-5">
+      <h3 class='mt-5 topic'>新着トピック</h3>
        <div class="text-right">
         <%= link_to "トピック一覧", topics_path, class:"btn btn-outline-success" %>
-       </div><% end %>
-      <% @topics.first(15).each do |topic|%>
+       </div>
+       <% @topics.first(15).each do |topic|%>
         <div class="border-top">
           <p>
             <%= link_to topic_path(topic) do %>
@@ -39,10 +39,11 @@
           </p>
         </div>
       <% end %>
+      </div>
     </div>
 
     <div class="col-md-3 col-xs-12 col-sm-12 ml-3">
-       <h5 class="side"><b>カテゴリー</b></h5>
+       <h3 class="border-bottom">カテゴリー</h3>
         <ul class="list-category">
          <% @categories.each do |category| %>
           <li class="side-category">
@@ -52,7 +53,7 @@
          <% end %>
         </ul>
 
-        <h5 class="side"><b>年齢別カテゴリー</b></h5>
+        <h3 class="border-bottom"><b>年齢別カテゴリー</b></h3>
         <ul class="list-category">
          <% @ages.each do |age| %>
           <li class="side-category">
