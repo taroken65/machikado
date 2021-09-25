@@ -22,45 +22,32 @@
          <% else %>
            いいね数：<%= @topic.favorites.count %>
          <% end %>
-
-
-         <p class='text-right'>
+　　　　　<p class='text-right'>
            <%= link_to user_path(@topic.user) do %>
            <%= attachment_image_tag(@topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>
            <%= @topic.user.name %>
-           <% end %>
+           <% end %><br>
            <%= @topic.created_at.strftime('%Y/%m/%d') %>
-         </p>
+          </p>
 
   <h2 class="topic mt-5">コメント</h2>
-    <table class="table table-borderless">
-     <thead>
-      <tr>
-       <th></th>
-       <th></th>
-       <th></th>
-      </tr>
-     </thead>
-     <tbody>
-      <% @topic.comments.each do |comment| %>
-      <tr>
-       <td>
+    <% @topic.comments.each do |comment| %>
+      <div class="border-top">
+       <p class="mt-2">
         <%= comment.comment %>
-       </td>
-       <td>
-           <%= link_to user_path(comment.user) do %>
-           <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>
-           <%= comment.user.name %>
-           <% end %>
-           <%= comment.created_at.strftime('%Y/%m/%d') %>
-       </td>
-       <td><% if comment.user == current_user %>
-        <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete, class:"btn btn-danger" %>
-        <% end %>
-       </td>
-       <% end %>
-      </tbody>
-    </table>
+       </p>
+       <p class='text-right'>
+         <%= link_to user_path(comment.user) do %>
+         <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>
+         <%= comment.user.name %>
+         <% end %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %>
+         <% if comment.user == current_user %>
+         <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete, class:"btn btn-danger" %>
+         <% end %>
+       </p>
+      </div>
+    <% end %>
 
   <h2 class="topic mt-5">コメント投稿</h2>
    <div class="mt-3">
