@@ -39,24 +39,27 @@
        <th></th>
        <th></th>
        <th></th>
-       <th></th>
       </tr>
      </thead>
      <tbody>
       <% @topic.comments.each do |comment| %>
       <tr>
-       <td><%= link_to user_path(comment.user) do %>
-          <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>
-          <%= comment.user.name %><% end %></td>
-       <td><%= comment.comment %></td>
-       <td> <%= comment.created_at.strftime('%Y/%m/%d') %></td>
        <td>
-        <% if comment.user == current_user %>
+        <%= comment.comment %>
+       </td>
+       <td>
+           <%= link_to user_path(comment.user) do %>
+           <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle") %>
+           <%= comment.user.name %>
+           <% end %>
+           <%= comment.created_at.strftime('%Y/%m/%d') %>
+       </td>
+       <td><% if comment.user == current_user %>
         <%= link_to "削除", topic_comment_path(comment.topic, comment), method: :delete, class:"btn btn-danger" %>
         <% end %>
        </td>
-      </tr>
-      </tbody><% end %>
+       <% end %>
+      </tbody>
     </table>
 
   <h2 class="topic mt-5">コメント投稿</h2>

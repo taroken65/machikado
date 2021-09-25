@@ -10,26 +10,27 @@
       </div>
 
       <div class="mb-5">
-      <h3 class='mt-5 topic'>新着トピック</h3>
+      <h3 class='topic'>新着トピック</h3>
        <div class="text-right">
         <%= link_to "トピック一覧", topics_path, class:"btn btn-outline-success" %>
        </div>
        <% @topics.first(15).each do |topic|%>
-        <div class="border-top">
+       <div class="border-top">
+        <span class="category mt-2">
+              <%= link_to topic_category_path(topic.category) do %>
+              <%= topic.category.name %><% end %>
+        </span>
+        <span class="age mb-1">
+              <%= link_to topic_age_path(topic.age) do %>
+              <%= topic.age.name %><% end %>
+        </span>
           <p>
             <%= link_to topic_path(topic) do %>
               <%= topic.title %>
             <% end %>
           </p>
           <p><%= topic.body %></p>
-          <span class="category">
-              <%= link_to topic_category_path(topic.category) do %>
-              <%= topic.category.name %><% end %>
-          </span>
-          <span class="age">
-              <%= link_to topic_age_path(topic.age) do %>
-              <%= topic.age.name %><% end %>
-          </span>
+
           <p class='text-right'>
             <%= link_to user_path(topic.user) do %>
               <%= attachment_image_tag(topic.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "30x30", class:"rounded-circle") %>
@@ -53,7 +54,7 @@
          <% end %>
         </ul>
 
-        <h3 class="border-bottom"><b>年齢別カテゴリー</b></h3>
+        <h3 class="border-bottom">年齢別カテゴリー</h3>
         <ul class="list-category">
          <% @ages.each do |age| %>
           <li class="side-category">
@@ -63,7 +64,7 @@
          <% end %>
         </ul>
 
-       <h5 class="side mt-4"><b>アクセス数ランキング</b></h5>
+       <h3 class="border-bottom mt-4">アクセス数ランキング</h3>
          <% lastViewCount = 0 %>
           <% j = 1 %>
            <% @view_ranks.each.with_index(1) do |ranking, i| %>
@@ -89,7 +90,7 @@
             <br>
            <% end %>
 
-       <h5 class="side mt-4"><b>いいね数ランキング</b></h5>
+       <h3 class="border-bottom mt-4">いいね数ランキング</h3>
          <% lastFavorite = 0 %>
           <% j = 1 %>
            <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
@@ -115,7 +116,7 @@
             <br>
            <% end %>
 
-      <h5 class="side mt-4"><b>コメント数ランキング</b></h5>
+      <h3 class="border-bottom mt-4">コメント数ランキング</h3>
          <% lastComment = 0 %>
           <% j = 1 %>
            <% @comment_ranks.each.with_index(1) do |ranking, i| %>
@@ -141,7 +142,7 @@
             <br>
            <% end %>
 
-      <h5 class="side mt-4"><b>トピック投稿数ランキング</b></h5>
+      <h3 class="border-bottom mt-4">トピック投稿数ランキング</h3>
          <% lastTopic = 0 %>
           <% j = 1 %>
            <% @user_ranks.each.with_index(1) do |ranking, i| %>
@@ -167,7 +168,7 @@
             <br>
            <% end %>
 
-       <h5 class="side mt-4"><b>コメント投稿数ランキング</b></h5>
+       <h3 class="border-bottom mt-4">コメント投稿数ランキング</h5>
          <% lastUserComment = 0 %>
           <% j = 1 %>
            <% @user_comment_ranks.each.with_index(1) do |ranking, i| %>
