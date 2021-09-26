@@ -3,6 +3,8 @@ class User::TopicsController < ApplicationController
 
   def index
     @topics = Topic.page(params[:page]).reverse_order
+    @categories = Category.all
+    @ages = Age.all
   end
 
   def new
@@ -24,6 +26,8 @@ class User::TopicsController < ApplicationController
       end
     end
     @comment = Comment.new
+    @categories = Category.all
+    @ages = Age.all
   end
 
   def destroy
