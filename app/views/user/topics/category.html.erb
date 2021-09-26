@@ -1,5 +1,7 @@
 <div class="container mt-5">
- <h2 class="topic">カテゴリー：<%= @category.name %> <span class="small">(全<%= @topics.count %>件)</span></h2>
+ <div class="row">
+  <div class="col-md-8 col-xs-12 col-sm-12">
+   <h2 class="topic">カテゴリー：<%= @category.name %> <span class="small">(全<%= @topics.count %>件)</span></h2>
     <% @topics.each do |topic| %>
      <div class="border-top">
       <span class="age mt-2 mb-1">
@@ -25,5 +27,29 @@
        </p>
       </div>
      <% end %>
+   </div>
+    <div class="col-md-3 col-xs-12 col-sm-12 ml-3">
+       <h3 class="border-bottom">カテゴリー</h3>
+        <ul class="list-category">
+         <% @categories.each do |category| %>
+          <li class="side-category">
+            <%= link_to topic_category_path(category) do %>
+            <%= category.name %><% end %> (<%= category.topics.count %>)
+          </li>
+         <% end %>
+        </ul>
 
+        <h3 class="border-bottom">年齢別カテゴリー</h3>
+        <ul class="list-category">
+         <% @ages.each do |age| %>
+          <li class="side-category">
+            <%= link_to topic_age_path(age) do %>
+            <%= age.name %><% end %> (<%= age.topics.count %>)
+          </li>
+         <% end %>
+        </ul>
+
+
+    </div>
+ </div>
 </div>

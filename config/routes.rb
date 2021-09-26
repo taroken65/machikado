@@ -16,7 +16,11 @@ get "about" => "user/homes#about"
 
  scope module: :user do
   get '/search', to: 'searches#search'
-  resources :users, only: [:show,:edit,:update]
+  resources :users, only: [:show,:edit,:update] do
+   resource :relationships, only: [:create, :destroy]
+  	get 'followings' => 'relationships#followings', as: 'followings'
+  	get 'followers' => 'relationships#followers', as: 'followers'
+  	end
   resources :topics, only: [:index,:show,:new,:create,:destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
