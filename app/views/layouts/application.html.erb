@@ -51,38 +51,35 @@
            </button>
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
            <ul class="navbar-nav ml-auto">
-            <li>
-              <%= link_to "トピック作成", new_topic_path, class: "btn btn-outline-light ml-2 small" %>
-            </li>
-            <li>
-              <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-light ml-2" %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light ml-2' %>
-            </li>
-            <li>
-             <%= link_to "お問い合わせ", new_contact_path, class: 'btn btn-outline-light ml-2' %>
-            </li>
-            <li class="mt-1 ml-2">
+            <li class="mt-1 mr-3">
               <%= form_with url: search_path, method: :get, class: "search-form", local: true do |f| %>
               <%= f.text_field :keyword, value: @keyword %>
-              <button type="submit" value="検索" id="search-btn" class="btn btn-outline-light">
+              <button type="submit" value="検索" id="search-btn" >
                 <i class="fas fa-search"></i>
               </button>
               <% end %>
             </li>
+            <li>
+              <%= link_to "トピック作成", new_topic_path, class: "nav-link text-light ml-2" %>
+            </li>
+            <li>
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link text-light ml-2" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light ml-2' %>
+            </li>
+            <li>
+             <%= link_to "お問い合わせ", new_contact_path, class: 'nav-link text-light ml-2' %>
+            </li>
            </ul>
            </div>
-
-
-
          </div>
         </nav>
        </header>
         <!--管理者でも会員でもログインしていないとき-->
      <% else %>
        <header class="sticky-top shadow-sm">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #26896D;" >
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #009D5B;" >
          <div class="container">
           <a class="navbar-brand p-3 text-white" href="/"><b>まちかど広場</b></a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,13 +88,13 @@
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
            <ul class="navbar-nav ml-auto">
             <li>
-             <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light ml-2' %>
+             <%= link_to "会員登録", new_user_registration_path, class: 'nav-link text-light ml-2' %>
             </li>
             <li>
-             <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light ml-2' %>
+             <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light ml-2' %>
             </li>
             <li>
-             <%= link_to "お問い合わせ", new_contact_path, class: 'btn btn-outline-light ml-2' %>
+             <%= link_to "お問い合わせ", new_contact_path, class: 'nav-link text-light ml-2' %>
             </li>
            </ul>
            </div>
@@ -110,11 +107,11 @@
 
 
 
-  <footer class="bg-white shadow text-center text-lg-start">
+    <footer class="shadow text-center text-lg-start">
      <div class="text-center p-3 bg-light">
        Copyright © まちかど広場 All rights reserved
      </div>
-     </footer>
+    </footer>
 
   </body>
 </html>

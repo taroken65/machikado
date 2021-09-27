@@ -1,4 +1,5 @@
 class Admin::AgesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @age = Age.new
     @ages = Age.all

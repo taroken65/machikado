@@ -1,4 +1,5 @@
 class Admin::TopicsController < ApplicationController
+  before_action :authenticate_admin!
   def index
    @topics = Topic.page(params[:page]).reverse_order
   end

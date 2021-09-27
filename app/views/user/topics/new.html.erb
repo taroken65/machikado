@@ -14,11 +14,11 @@
   </div>
 
   <div class="form-group mt-3">
-    <h4>子どもの年齢    <%= f.collection_select :age_id, Age.all, :id, :name %></h4>
+    <h4>子どもの年齢  <span class="small"><%= f.collection_select :age_id, Age.all, :id, :name %></span></h4>
   </div>
 
   <div class="form-group mt-3">
-    <h4>カテゴリー <%= f.collection_select :category_id, Category.all, :id, :name %></h4>
+    <h4>カテゴリー <span class="small"><%= f.collection_select :category_id, Category.all, :id, :name %></span></h4>
   </div><br>
 
   <div class="form-group">

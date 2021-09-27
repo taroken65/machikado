@@ -1,7 +1,7 @@
 <div class="container mt-5">
  <div class="row">
   <div class="col-md-8 col-xs-12 col-sm-12">
-   <h2 class="topic">カテゴリー：<%= @category.name %> <span class="small">(全<%= @topics.count %>件)</span></h2>
+   <h3 class="topic">カテゴリー：<%= @category.name %> <span class="small">(全<%= @topics.count %>件)</span></h3>
     <% @topics.each do |topic| %>
      <div class="border-top">
       <span class="age mt-2 mb-1">
