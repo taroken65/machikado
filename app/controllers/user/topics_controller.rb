@@ -15,7 +15,7 @@ class User::TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     if @topic.save
-    redirect_to topic_path(topic)
+    redirect_to topic_path(@topic)
     else
      render "new"
     end
