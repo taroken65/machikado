@@ -12,10 +12,13 @@ class User::TopicsController < ApplicationController
   end
 
   def create
-    topic = Topic.new(topic_params)
-    topic.user_id = current_user.id
-    topic.save
+    @topic = Topic.new(topic_params)
+    @topic.user_id = current_user.id
+    if @topic.save
     redirect_to topic_path(topic)
+    else
+     render "new"
+    end
   end
 
   def show
