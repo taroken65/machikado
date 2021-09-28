@@ -46,6 +46,8 @@ class User::TopicsController < ApplicationController
   def age
     @age =Age.find(params[:id])
     @topics = Topic.includes(:age).where(age_id: @age)
+    @categories = Category.all
+    @ages = Age.all
   end
 
   private

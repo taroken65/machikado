@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <h3 class="topic">ユーザー詳細</h3>
+  <% if user_signed_in? %>
    <% if current_user != @user %>
      <% if current_user.following?(@user) %>
       <div class="text-right">
@@ -15,6 +16,9 @@
       <%= link_to "編集する", edit_user_path, class:"btn btn-outline-success" %>
     </div>
    <% end %>
+  <% end %>
+
+
 
    <table class="table">
       <tr>
@@ -96,6 +100,14 @@
          <%= comment.topic.title %>
          <% end %>
        </p>
+       <span class="category">
+              <%= link_to topic_category_path(comment.topic.category) do %>
+              <%= comment.topic.category.name %><% end %>
+       </span>
+       <span class="age mb-1">
+              <%= link_to topic_age_path(comment.topic.age) do %>
+              <%= comment.topic.age.name %><% end %>
+       </span>
        <p class='text-right'>
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
